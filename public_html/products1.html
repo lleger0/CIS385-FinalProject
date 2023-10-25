@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<!--
+Name: LuClandereine Leger
+Student Id: 24058596
+Page: index.html
+Description: The goth page for my website displaying a variety of categories to
+buy from.
+-->
+<html>
+    <head>
+        <title>The Alternative Awakening</title>
+        
+        <style>
+            
+            p{
+                color:red;
+            }
+            
+            h1,h2,h3,h4,h5,h6{
+                color:red;
+            }
+            
+            a{
+                color:red;
+            }
+            
+            
+        </style>
+        
+       
+        
+    </head>
+    <body style="background-color:black">
+        <div id ="header">
+            <a href="index.html">Home</a>
+            <a href='about.html'>About Us</a> 
+        <a href="contact.html">Contact Us Here &#128526;</a>
+        <a style="float: right" href="cart.html">Shopping Cart</a>
+
+        <center>        
+            <img src="images\The Alternative Awakening.png" alt="The Alternative Awakening" height="200">
+        </center>
+        </div>
+    <center>
+        <h3>Hi Welcome! To the Store! Shop for jewelry to you're hearts desire at the Alternative Awakening!</h3>
+        
+        
+        
+        <br>
+        <br>
+        <hr style="color:white">
+        
+        <!--4 pages of products so 4 categories
+        Chains, necklaces, jewelery
+        Goth, Grunge vibes
+        Fairy vibes
+        Other
+        
+        
+        -->
+    
+    <h3>Our Products</h3>    </center>
+
+        
+    <div class="container">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Gothy Products</h3>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- The products will be loaded here -->
+                <div class="col-md-8">
+                    <table class="table table-bordered" style="color:red">
+                        <thead>
+                            <tr>
+                                <th style="width: 10%">ID</th>
+                                <th style="width: 40%">Description</th>
+                                <th>Image</th>
+                                <th style="width: 15%">Price</th>
+                            </tr>
+                        </thead>
+                        <tbody id="store"></tbody>
+                    </table>
+                </div>
+                
+                <div class="col-md-2">
+                    <pre id="receipt"></pre>
+                </div>
+                
+            </div>
+
+        </div>
+        
+        <script>
+            
+            var products = [
+                    {
+                        id: 1,
+                        description: "Haraku Belt with Chains",
+                        price: 20,
+                        image: "images\\Harajuku Belt with Chains.jpg"
+                    },
+                    {
+                        id: 2,
+                        description: "MoonBelt",
+                        price: 25,
+                        image: "images\\MoonBelt.jpg"
+                    },
+                    {
+                        id: 3,
+                        description: "Butterfly Chains",
+                        price: 30,
+                        image: "images\\Butterfly chains.jpg"
+                    },
+                    {
+                        id: 4,
+                        description: "Indigo Crystal",
+                        price: 35,
+                        image: "images\\Bat Necklace One.png"
+                    },
+                    {
+                        id: 5,
+                        description: "Bat Necklace Clasp",
+                        price: 10,
+                        image: "images/Bat Necklace Two.png"
+                    },
+                    {
+                        id: 6,
+                        description: "Spikey Choker",
+                        price: 15,
+                        image: "images\\Spikey Choker.png"
+                    },
+                    {
+                        id: 7,
+                        description: "Cross Earing",
+                        price: 20,
+                        image: "images\\CrossEarring.png"
+                    },
+                    {
+                        id: 8,
+                        description: "Romance Cross Necklace",
+                        price: 30,
+                        image: "images\\CrossNecklace.png"
+                    },
+                    {
+                        id: 9,
+                        description: "Star Belt",
+                        price: 11,
+                        image: "images\\StarBelt.png"
+                    },
+                    {
+                        id: 10,
+                        description: "Holy Cross Necklace Two",
+                        price: 50,
+                        image: "images\\CrossNecklaceTwo.png"
+                    }
+                ];
+                // End of products array
+
+            // Function to run when the page loads
+            window.onload = function () {
+                // Create my products array
+                
+                console.log("in the function");
+                
+
+                var tableRow = "";
+                for (var i = 0; i < products.length; i++) {
+                    tableRow += "<tr>";
+                    tableRow += "<td>" + products[i].id + "</td>";
+                    tableRow += "<td>" + products[i].description + "</td>";
+                    tableRow += "<td><img src='" + products[i].image + "' alt='product image' style='width:50%'>";
+                    //tableRow += "<br><input type='button' id='" + products[i].id + "' value='Add to Cart'>";
+                    tableRow += "</td>";
+                    tableRow += "<td>" + products[i].price + "<br><br>" +
+                            "<input type='button' id='" + products[i].id + "' value='Add to Cart' onclick='sampleFunction(\"" + products[i].id + "\")'>";
+                    tableRow += "</td>";
+                    tableRow += "<tr>";
+                }
+
+                document.getElementById("store").innerHTML = tableRow;
+
+            };
+            
+            function sampleFunction(prod_id){
+                console.log("Inside sampleFunction function");
+                alert("Item " + prod_id + " Added");
+                
+                // Here you would implement the shopping cart using Cookies using:
+                // document.cookie = "myName=George";
+                
+                // or Local Storage:
+                //localStorage.setItem("lastname", "Smith");
+                
+                // Show selected items on a receipt
+                
+                localStorage.setItem(products[prod_id-1].description,products[prod_id].price);
+                document.getElementById("receipt").innerHTML += "Item " + prod_id + "<br>";
+            }
+        </script>
+    </body>
+</html>
